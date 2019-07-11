@@ -15,6 +15,7 @@
                         <th>Fecha del evento</th>
                         <th>Fecha de creación</th>
                         <th>Imagen</th>
+                        <th>Actualizar</th>
                     </tr>
                 </thead>
                 <tbody>                    
@@ -33,7 +34,9 @@
                         N/A
                         @endisset
                         </th>
-                        
+                        <th>
+                            <a href="{{route('updateEventForm',$key)}}">ir</a>
+                        </th>                        
                     </tr>
                 @endforeach
                 </tbody>

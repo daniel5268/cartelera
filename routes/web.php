@@ -17,7 +17,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Crear
 Route::get('/event/create','EventController@createEventForm')->name('createEvent');
-Route::post('/event/create','EventController@createEvent')->name('createEvent');
-
+Route::post('/event/create','EventController@createEvent');
+//Leer
 Route::get('/events/list','EventController@listEvents')->name('listEvents');
+//Actualizar
+Route::get('/event/update/{id}','EventController@updateEventForm')->name('updateEventForm');
+Route::post('/event/update','EventController@updateEvent')->name('updateEvent');
+
