@@ -92,7 +92,7 @@ class EventController extends Controller
 		$user_id=Auth::user()->id;
 		$event = Event::findById($data['id']);
 		if ($user_id != $event->user_id ){
-			return redirect()->back()->with('warning','Acceso denegado');	
+			return redirect()->back()->with('warning','Acceso denegado');
 		}
 		if (!is_null($request->img) and $request->file('img')->isValid()){
 			$path = $request->img->store('public');
@@ -103,7 +103,19 @@ class EventController extends Controller
 		unset($data['img']);
 
 		Event::where('id', '=', $event->id)->update($data);
-		
+
     	return redirect()->route('listEvents')->with('message','Evento modificado con éxito');
     }
+
+    public function deleteEvent(Request $request)
+    {
+    	$event = Event::findById($request->id);
+    	if ($event->user_id != Auth::user()->id){
+    		return redirect()->back()->with('warning','Acceso denegado');
+    	}
+    	$event->delete();
+    	return redirect()->route('listEvents')->with('warning','Evento eliminado con éxito');
+
+    }
+
 }

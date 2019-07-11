@@ -95,11 +95,17 @@
                         <button type="submit" class="btn btn-primary">
                             {{ __('Modificar evento') }}
                         </button>
+                        <button  type="button" class="btn btn-danger" id="delete-button">
+                            {{ __('Eliminar evento') }}
+                        </button>
                     </div>
-                </div>
-                
+                </div>                
             </form>
         </div>
     </div>
 </div>
+<form method="POST" id="delete-form" action="{{route('eraseEvent')}}">
+    @csrf
+    <input type="hidden" name="id" value="{{$data['id']}}">
+</form>
 @endsection

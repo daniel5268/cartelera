@@ -26,3 +26,5 @@ Route::get('/events/list','EventController@listEvents')->name('listEvents');
 Route::get('/event/update/{id}','EventController@updateEventForm')->name('updateEventForm');
 Route::post('/event/update','EventController@updateEvent')->name('updateEvent');
 
+Route::post('/event/delete','EventController@deleteEvent')->name('eraseEvent');
+

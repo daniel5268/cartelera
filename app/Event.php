@@ -18,4 +18,8 @@ class Event extends Model
     {
     	return self::query()->where('id','=',$id)->first();
     }
+    public static function deleteById($id)
+    {
+    	self::query()->where('id','=',$id)->first()->delete();	
+    }
 }

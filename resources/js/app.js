@@ -49,3 +49,7 @@ $('.cart-nav-link').each(function(){
         $(this).closest("li").addClass("active"); 
     }
 });
+
+$('#delete-button').click(function() {
+	$('#delete-form').submit();
+});
