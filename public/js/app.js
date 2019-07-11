@@ -49218,6 +49218,24 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
+$('#img').change(function () {
+  var value = $(this).val();
+  value = value.replace("fakepath", "...");
+  value = value.replace("C:", "...");
+  console.log('entro', value);
+  var label = $('#img-label');
+  console.log(label);
+  label.text(value);
+});
+var url = window.location.pathname;
+var activePage = url.substring(url.lastIndexOf('/') + 1);
+$('.cart-nav-link').each(function () {
+  var linkPage = this.href.substring(this.href.lastIndexOf('/') + 1);
+
+  if (activePage == linkPage) {
+    $(this).closest("li").addClass("active");
+  }
+});
 
 /***/ }),
 

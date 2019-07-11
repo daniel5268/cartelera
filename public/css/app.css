@@ -10644,3 +10644,20 @@ a.text-dark:focus {
   }
 }
 
+.active a {
+  color: grey !important;
+}
+
+.active a:hover {
+  color: #d2d2d2 !important;
+}
+
+.img-div {
+  height: 100%;
+}
+
+.event-img {
+  max-width: 100%;
+  max-height: 100%;
+}
+

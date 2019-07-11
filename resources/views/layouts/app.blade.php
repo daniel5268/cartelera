@@ -32,7 +32,16 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+
                     <ul class="navbar-nav mr-auto">
+                        @auth
+                        <li class="nav-item">
+                            <a href="{{ route('createEvent') }}" class="nav-link cart-nav-link">Crear evento</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('listEvents') }}" class="nav-link cart-nav-link">Listar mis eventos</a>
+                        </li>
+                        @endauth
 
                     </ul>
 
@@ -41,37 +50,45 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link cart-nav-link" href="{{ route('login') }}">{{ __('Ingresar') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link cart-nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                    {{ __('Cerrar sesión') }}
                                 </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                             </li>
                         @endguest
                     </ul>
                 </div>
             </div>
         </nav>
-
+        @if(\Session::get('message'))
+            <div class="row justify-content-center">
+                <div class="col col-sm-8 col-md-6 alert alert-success mt-5 self-align-center mx-3" role="alert">
+                    {{Session::get('message')}}
+                </div>
+            </div>
+        @endif
+        
+        @if(\Session::get('warning'))
+            <div class="row justify-content-center">
+                <div class="col col-sm-8 col-md-6 alert alert-warning mt-5 self-align-center mx-3" role="alert">
+                    {{Session::get('warning')}}
+                </div>
+            </div>
+        @endif
         <main class="py-4">
             @yield('content')
         </main>
