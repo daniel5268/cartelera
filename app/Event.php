@@ -27,4 +27,10 @@ class Event extends Model
         $today = date('Y-m-d');
         return self::query()->where('date','=',$today)->get();
     }
+    public static function allFuture()
+    {
+        $today = date('Y-m-d');
+        return self::query()->where('date','>',$today)->get();
+    }
+    
 }

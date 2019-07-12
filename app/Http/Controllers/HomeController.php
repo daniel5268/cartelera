@@ -41,7 +41,23 @@ class HomeController extends Controller
             $today[$newTime][$event->id]['description']=$event->description;
             
         }
+        $events = Event::allFuture();
+        $future = [];
+        foreach ($events as $event){
+            $newTime = $event->date;
+            if (!array_key_exists($newTime,$future)){
+                $future[$newTime]=[];
+            }
+            $future[$newTime][$event->id]=[];
+            $future[$newTime][$event->id]['img']=Storage::url($event->img);
+            $future[$newTime][$event->id]['name']=$event->name;
+            $future[$newTime][$event->id]['location']=$event->location;
+            $future[$newTime][$event->id]['aditional']=$event->aditional;
+            $future[$newTime][$event->id]['description']=$event->description;
+            
+        }
         ksort($today);
-        return view('home')->with('today',$today);
+        ksort($future);
+        return view('home')->with(['today'=>$today,'future'=>$future]);
     }
 }
