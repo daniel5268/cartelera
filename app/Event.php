@@ -22,4 +22,9 @@ class Event extends Model
     {
     	self::query()->where('id','=',$id)->first()->delete();	
     }
+    public static function allToday()
+    {
+        $today = date('Y-m-d');
+        return self::query()->where('date','=',$today)->get();
+    }
 }

@@ -18,7 +18,7 @@ class EventController extends Controller
     {
 		$validatedData = $request->validate([
 	        'name' => 'required|max:255',
-	        'date' => 'required|date_format:Y-m-d|after_or_equal:today',
+	        'date' => 'required|date_format:Y-m-d',
 	        'img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:1024',
 	        'time' => 'required|date_format:H:i',
 	        'location' => 'required',
@@ -82,7 +82,7 @@ class EventController extends Controller
     {
 		$validatedData = $request->validate([
 	        'name' => 'required|max:255',
-	        'date' => 'required|date_format:Y-m-d|after_or_equal:today',
+	        'date' => 'required|date_format:Y-m-d',
 	        'img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:1024',
 	        'time' => 'required|date_format:H:i',
 	        'location' => 'required',

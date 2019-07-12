@@ -34,15 +34,9 @@
                     <!-- Left Side Of Navbar -->
 
                     <ul class="navbar-nav mr-auto">
-                        @auth
                         <li class="nav-item">
-                            <a href="{{ route('createEvent') }}" class="nav-link cart-nav-link">Crear evento</a>
+                            <a href="{{ route('home') }}" class="nav-link cart-nav-link">Inicio</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('listEvents') }}" class="nav-link cart-nav-link">Listar mis eventos</a>
-                        </li>
-                        @endauth
-
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -58,7 +52,12 @@
                                 </li>
                             @endif
                         @else
-                            
+                            <li class="nav-item">
+                                <a href="{{ route('createEvent') }}" class="nav-link cart-nav-link">Crear evento</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('listEvents') }}" class="nav-link cart-nav-link">Listar mis eventos</a>
+                            </li>    
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
